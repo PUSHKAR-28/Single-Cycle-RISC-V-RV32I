@@ -1,0 +1,19 @@
+# Vivado build and simulation directories
+*.runs/
+*.sim/
+*.cache/
+*.hw/
+*.ip_user_files/
+
+# Vivado log and journal files
+*.jou
+*.log
+*.str
+
+# Vivado project file
+*.xpr
+
+# Extra directories and files to ignore
+Material/
+*.wcfg
+read_mem.hexg
