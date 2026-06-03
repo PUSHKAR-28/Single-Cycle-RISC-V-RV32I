@@ -1,0 +1,13 @@
+Install the zip from here : https://github.com/xpack-dev-tools/riscv-none-elf-gcc-xpack/releases/download/v15.2.0-1/xpack-riscv-none-elf-gcc-15.2.0-1-win32-x64.zip?utm_source=chatgpt.com
+
+Add the bin folder to environment variables path
+
+Run these commands in the terminal in order, make sure to have the link.ld, start.S, main.c files:
+
+1. riscv-none-elf-gcc -march=rv32i -mabi=ilp32 -nostdlib -nostartfiles -T link.ld -o program.elf start.S main.c
+
+2. riscv-none-elf-objcopy -O verilog program.elf raw.hex
+
+3. riscv-none-elf-objdump -d program.elf
+
+4. python convert.py
