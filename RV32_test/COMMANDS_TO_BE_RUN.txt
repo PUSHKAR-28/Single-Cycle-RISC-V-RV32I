@@ -1,0 +1,7 @@
+riscv-none-elf-gcc -march=rv32i -mabi=ilp32 -nostdlib -nostartfiles -T link.ld -o program.elf start.S main.c
+
+riscv-none-elf-objcopy -O verilog program.elf raw.hex
+
+riscv-none-elf-objdump -d program.elf
+
+python convert.py
