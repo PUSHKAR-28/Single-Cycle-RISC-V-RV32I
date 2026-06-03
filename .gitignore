@@ -17,3 +17,6 @@
 Material/
 *.wcfg
 read_mem.hexg
+
+!verification/
+!verification/**

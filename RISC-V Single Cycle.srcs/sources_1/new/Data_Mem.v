@@ -3,10 +3,11 @@ module DMEM(
     input clk,
     input MemRead, MemWrite,
     input [2:0] funct3,
-    input [31:0] address, write_data,
+    input [31:0] address_plus_0x4000, write_data,
     output reg [31:0] read_data
 );
     reg [31:0] mem [0:4095]; // 16KB byte addressable
+    wire [31:0] address = (address_plus_0x4000 - 32'h4000); //because of linker and compiler problems, the linker starts the dmem from 0x2000 not 0x0000, so subtract the offset....
 
     // Read (combinational)
     always @(*) begin

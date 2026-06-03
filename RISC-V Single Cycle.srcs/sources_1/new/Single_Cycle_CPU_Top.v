@@ -105,6 +105,7 @@ module Single_Cycle_CPU_Top(
         .Carry       (Carry)
     );
     ALU_Control ALU_Control_inst (
+        .Opcode_Bit_5(Instruction[5]),
         .funct3      (Instruction[14:12]),
         .funct7      (Instruction[31:25]),
         .ALUOp       (ALUOp),
@@ -136,7 +137,7 @@ module Single_Cycle_CPU_Top(
         .MemRead     (MemRead),
         .MemWrite    (MemWrite),
         .funct3      (Instruction[14:12]),
-        .address     (ALU_Out),
+        .address_plus_0x4000     (ALU_Out), //changed because of the memory offset in the linker
         .write_data  (reg_out_data2),
         .read_data   (read_data)
     );

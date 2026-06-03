@@ -1,11 +1,12 @@
 `timescale 1ns / 1ps
 module Control_Unit(
     input  [31:0] Instruction,
-    output reg        ALUSrc, RegWrite, MemRead, MemWrite, Branch, Jump, LUI, AUIPC,
+    output reg        ALUSrc, RegWrite, MemRead, MemWrite, Branch, Jump, LUI, AUIPC, M_Extension,
     output reg [1:0]  WBSrc,   //replaced MemtoReg// 00=ALU, 01=Memory, 10=PC+4, 11=Upper-Imm(unused,LUI bypasses)
     output reg [1:0]  ALUOp
 );
     always @(*) begin
+        M_Extension = 1'b0;
         case (Instruction[6:0])
          // opcode       ALUSrc,RegWrite,MemRead,MemWrite,Branch,Jump,LUI,AUIPC, WBSrc, ALUOp
             7'b0110011 : {ALUSrc,RegWrite,MemRead,MemWrite,Branch,Jump,LUI,AUIPC,WBSrc,ALUOp} = 12'b0_1_0_0_0_0_0_0_00_10; // R-type
